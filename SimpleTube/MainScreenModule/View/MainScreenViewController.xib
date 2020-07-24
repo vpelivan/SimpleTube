@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="SimpleTube" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="9tv-A1-Qmg" id="Gnw-RL-hFU"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Gg1-pr-XY5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="liQ-TO-TOb">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9tv-A1-Qmg">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="QT5-lh-Pzo"/>
+                        <outlet property="delegate" destination="-1" id="oAa-LZ-tBt"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9tv-A1-Qmg" secondAttribute="bottom" id="0Dn-Pp-E1T"/>
+                <constraint firstItem="liQ-TO-TOb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8uY-tz-D5g"/>
+                <constraint firstItem="9tv-A1-Qmg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JF4-3l-X7b"/>
+                <constraint firstAttribute="bottom" secondItem="liQ-TO-TOb" secondAttribute="bottom" id="K1b-uS-7cs"/>
+                <constraint firstItem="9tv-A1-Qmg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Vsd-O5-Bcx"/>
+                <constraint firstItem="9tv-A1-Qmg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="aTB-XI-TJc"/>
+                <constraint firstItem="liQ-TO-TOb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="b3z-7f-slF"/>
+                <constraint firstItem="liQ-TO-TOb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uSY-e8-0LJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chalkboard" width="1080" height="1920"/>
+    </resources>
+</document>
