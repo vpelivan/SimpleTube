@@ -17,4 +17,25 @@ class Animations {
             completion()
         })
     }
+    
+    func performButtonAnimation(withDuration duration: Double, delay: Double, for button: UIButton?) {
+        slideObjectFromSide(withDuration: duration, delay: delay) {
+            button!.transform = .identity
+            button!.alpha = 1
+        }
+    }
+    
+    func performImageViewAnimation(withDuration duration: Double, delay: Double, for imageView: UIImageView?) {
+        slideObjectFromSide(withDuration: duration, delay: delay) {
+            imageView!.transform = .identity
+            imageView!.alpha = 1
+        }
+    }
+    
+    func performLabelAnimation(withDuration duration: Double, delay: Double, for label: UILabel?) {
+        slideObjectFromSide(withDuration: duration, delay: delay) {
+            label!.transform = .identity
+            label!.alpha = 1
+        }
+    }
 }

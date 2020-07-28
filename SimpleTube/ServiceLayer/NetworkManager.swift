@@ -15,7 +15,7 @@ class NetworkManager {
     private let mainAdress = "https://www.googleapis.com/youtube/v3/"
     private let apiKeyParam = "&key="
     public var apiKey: ApiKey?
-    
+//    public var apiKey = "AIzaSyC3FGPq3bQwnjR4JwZdZJSV1h2LunqLLTw"
     
     //MARK: - External Dependencies
     
@@ -34,12 +34,14 @@ class NetworkManager {
                 self.networkService.decodeData(from: data, into: ValidApiKeyRequest.self) { (smallRequest) in
                     guard let smallRequest = smallRequest else { return }
                     print(smallRequest)
+                    self.apiKey = ApiKey.init(key: string)
+                    completion(true, nil)
                 }
-                completion(true, nil)
             } else if let error = error {
                 completion(false, error)
             } else {
                 completion(false, nil)
+                return
             }
         }
     }

@@ -17,7 +17,6 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
     
-    
     static func CreateLoginScreen() -> UIViewController {
         let view = LoginScreenViewController()
         let presenter = LoginScreenPresenter(view: view)
@@ -32,6 +31,7 @@ class ModuleBuilder: Builder {
         let navigationController = UINavigationController(rootViewController: view)
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.navigationBar.prefersLargeTitles = true
+        
 //        navigationController.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
         return navigationController
     }

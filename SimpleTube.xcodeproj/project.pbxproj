@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02BACD76E9777BCD6E299131 /* Pods_SimpleTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F66DCA7B24C56E92B485C1 /* Pods_SimpleTube.framework */; };
 		5725666424C640B0007E8B39 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725666324C640B0007E8B39 /* ItemModel.swift */; };
 		5725666924C64222007E8B39 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725666724C64222007E8B39 /* ChannelTableViewCell.swift */; };
 		5725666A24C64222007E8B39 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5725666824C64222007E8B39 /* ChannelTableViewCell.xib */; };
@@ -22,7 +21,6 @@
 		572B67FA24C6318100834D11 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B67F924C6318100834D11 /* NetworkService.swift */; };
 		5730D77A24C746A80003CC00 /* ValidApiKeyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5730D77924C746A80003CC00 /* ValidApiKeyRequest.swift */; };
 		5730D77C24C796D50003CC00 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5730D77B24C796D50003CC00 /* RequestError.swift */; };
-		5771764324C9B58200331282 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771764224C9B58200331282 /* File.swift */; };
 		579DF8F024BF534D0023B6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DF8EF24BF534D0023B6AA /* AppDelegate.swift */; };
 		579DF8F224BF534D0023B6AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DF8F124BF534D0023B6AA /* SceneDelegate.swift */; };
 		579DF8F424BF534D0023B6AA /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DF8F324BF534D0023B6AA /* MainScreenViewController.swift */; };
@@ -37,8 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		15F66DCA7B24C56E92B485C1 /* Pods_SimpleTube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleTube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F76BF2F6E462EEC5F3FA76D /* Pods-SimpleTube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTube.release.xcconfig"; path = "Target Support Files/Pods-SimpleTube/Pods-SimpleTube.release.xcconfig"; sourceTree = "<group>"; };
 		5725666324C640B0007E8B39 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		5725666724C64222007E8B39 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		5725666824C64222007E8B39 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
@@ -53,7 +49,6 @@
 		572B67F924C6318100834D11 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5730D77924C746A80003CC00 /* ValidApiKeyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidApiKeyRequest.swift; sourceTree = "<group>"; };
 		5730D77B24C796D50003CC00 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
-		5771764224C9B58200331282 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		579DF8EC24BF534D0023B6AA /* SimpleTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579DF8EF24BF534D0023B6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579DF8F124BF534D0023B6AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +62,6 @@
 		57CF4D8524C20B5700F08A79 /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		57CF4D8824C20CC300F08A79 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		57CF4D8924C20CC300F08A79 /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
-		CCDA2FF61F1463C15ABAF2B9 /* Pods-SimpleTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTube.debug.xcconfig"; path = "Target Support Files/Pods-SimpleTube/Pods-SimpleTube.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02BACD76E9777BCD6E299131 /* Pods_SimpleTube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				5725667B24C64A80007E8B39 /* LoginScreenViewController.swift */,
-				5771764224C9B58200331282 /* File.swift */,
 				5725667C24C64A80007E8B39 /* LoginScreenViewController.xib */,
 			);
 			path = View;
@@ -143,8 +135,6 @@
 			children = (
 				579DF8EE24BF534D0023B6AA /* SimpleTube */,
 				579DF8ED24BF534D0023B6AA /* Products */,
-				5CEE678134710EE2588B14BE /* Pods */,
-				C0881001BE8A6AE331EA98AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,24 +220,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		5CEE678134710EE2588B14BE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CCDA2FF61F1463C15ABAF2B9 /* Pods-SimpleTube.debug.xcconfig */,
-				3F76BF2F6E462EEC5F3FA76D /* Pods-SimpleTube.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		C0881001BE8A6AE331EA98AA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				15F66DCA7B24C56E92B485C1 /* Pods_SimpleTube.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,11 +227,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 579DF90324BF534E0023B6AA /* Build configuration list for PBXNativeTarget "SimpleTube" */;
 			buildPhases = (
-				F42F88E38C8C844444205FF9 /* [CP] Check Pods Manifest.lock */,
 				579DF8E824BF534D0023B6AA /* Sources */,
 				579DF8E924BF534D0023B6AA /* Frameworks */,
 				579DF8EA24BF534D0023B6AA /* Resources */,
-				F0525C3D1E5A77DD0D794FC9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,48 +289,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		F0525C3D1E5A77DD0D794FC9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimpleTube/Pods-SimpleTube-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimpleTube/Pods-SimpleTube-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleTube/Pods-SimpleTube-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F42F88E38C8C844444205FF9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SimpleTube-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		579DF8E824BF534D0023B6AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -371,7 +299,6 @@
 				5725668224C675C0007E8B39 /* Animations.swift in Sources */,
 				5730D77A24C746A80003CC00 /* ValidApiKeyRequest.swift in Sources */,
 				5725667D24C64A80007E8B39 /* LoginScreenViewController.swift in Sources */,
-				5771764324C9B58200331282 /* File.swift in Sources */,
 				572B67FA24C6318100834D11 /* NetworkService.swift in Sources */,
 				5725666F24C64254007E8B39 /* VideoTableViewCell.swift in Sources */,
 				5725666424C640B0007E8B39 /* ItemModel.swift in Sources */,
@@ -508,7 +435,6 @@
 		};
 		579DF90424BF534E0023B6AA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCDA2FF61F1463C15ABAF2B9 /* Pods-SimpleTube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,7 +453,6 @@
 		};
 		579DF90524BF534E0023B6AA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F76BF2F6E462EEC5F3FA76D /* Pods-SimpleTube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

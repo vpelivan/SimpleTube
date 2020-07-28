@@ -10,22 +10,33 @@ import Foundation
 import UIKit
 
 protocol LoginScreenProtocol: class {
-    var searchController: UISearchController? { get set }
+    var welcomeLabel: UILabel! { get set }
+    var logoImageView: UIImageView! { get set }
+    var apiTextField: UITextField! { get set }
+    var stayLoggedSwitch: UISwitch! { get set }
+    var logInButton: UIButton! { get set }
+    var howToButton: UIButton! { get set }
+    var scrollViewBottomConstraint: NSLayoutConstraint! { get set }
     func proceedToScreen(viewController: UIViewController)
     func showAlert(with title: String?, message: String)
+    func setupGesture()
 }
 
 protocol LoginScreenPresenterProtocol: class {
     init(view: LoginScreenProtocol)
     func performLogin(with apiKey: String?, switchIsOn: Bool)
-    func performButtonAnimation(withDuration duration: Double, delay: Double, for button: UIButton)
-    func performImageViewAnimation(withDuration duration: Double, delay: Double, for imageView: UIImageView)
-    func performLabelAnimation(withDuration duration: Double, delay: Double, for label: UILabel)
+    func setupAnimations()
+    func performAnimations()
+    func addKeyboardObserver()
+    func removeKeyboardObserver()
 }
 
 class LoginScreenPresenter: LoginScreenPresenterProtocol {
     
     weak var view: LoginScreenProtocol?
+    private let notificationCenter = NotificationCenter.default
+    private let kbWillShowName = UIResponder.keyboardWillShowNotification
+    private let kbWillHideName = UIResponder.keyboardWillHideNotification
     
     let networkManager = NetworkManager()
     let animations = Animations()
@@ -35,51 +46,70 @@ class LoginScreenPresenter: LoginScreenPresenterProtocol {
     }
     
     func performLogin(with apiKey: String?, switchIsOn: Bool) {
-        
         let navigationController = ModuleBuilder.CreateMainScreen()
         guard apiKey != "" else {
             view?.showAlert(with: "API Key Field is empty", message: "Enter a valid API Key")
             return
         }
         networkManager.validateApiKey(from: apiKey) {
-            (isValid, error)  in
-            if isValid == true {
+            (keyIsValid, error)  in
+            if keyIsValid == true {
                 if switchIsOn == true {
                     //save key in CoreData
                 } else {
                     //delete all keys from CoreData
                 }
-                //proceed to main screen
                 self.view?.proceedToScreen(viewController: navigationController)
-            } else if let error = error {
+            }
+            else if let error = error {
                 guard let title = error.error?.code, let message = error.error?.message else { return }
                 self.view?.showAlert(with: "Request code: \(title)", message: message)
-            } else {
+            }
+            else {
                 self.view?.showAlert(with: "API Key is wrong", message: "Enter a valid API Key")
                 return
             }
-            
         }
     }
     
-    func performButtonAnimation(withDuration duration: Double, delay: Double, for button: UIButton) {
-        animations.slideObjectFromSide(withDuration: duration, delay: delay) {
-            button.transform = .identity
-            button.alpha = 1
-        }
+    func setupAnimations() {
+        
+        view?.welcomeLabel.transform = CGAffineTransform(translationX: 0, y: -500)
+        view?.logoImageView.transform = CGAffineTransform(translationX: 500, y: 0)
+        view?.logInButton.transform = CGAffineTransform(translationX: -500, y: 0)
+        
+        view?.logInButton.alpha = 0
+        view?.welcomeLabel.alpha = 0
+        view?.logoImageView.alpha = 0
+        view?.howToButton.alpha = 0
     }
     
-    func performImageViewAnimation(withDuration duration: Double, delay: Double, for imageView: UIImageView) {
-        animations.slideObjectFromSide(withDuration: duration, delay: delay) {
-            imageView.transform = .identity
-            imageView.alpha = 1
-        }
+    func performAnimations() {
+        animations.performButtonAnimation(withDuration: 1, delay: 0.2, for: view?.logInButton)
+        animations.performImageViewAnimation(withDuration: 1, delay: 0, for: view?.logoImageView)
+        animations.performButtonAnimation(withDuration: 3, delay: 1, for: view?.howToButton)
+        animations.performLabelAnimation(withDuration: 1, delay: 0.5, for: view?.welcomeLabel)
     }
     
-    func performLabelAnimation(withDuration duration: Double, delay: Double, for label: UILabel) {
-        animations.slideObjectFromSide(withDuration: duration, delay: delay) {
-            label.transform = .identity
-            label.alpha = 1
-        }
+    
+    
+    public func addKeyboardObserver() {
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: kbWillShowName, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: kbWillHideName, object: nil)
+    }
+    
+    public func removeKeyboardObserver() {
+        notificationCenter.removeObserver(self, name: kbWillShowName, object: nil)
+        notificationCenter.removeObserver(self, name: kbWillHideName, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
+        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.view?.scrollViewBottomConstraint.constant = keyboardSize.height
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        self.view?.scrollViewBottomConstraint.constant = 0
     }
 }

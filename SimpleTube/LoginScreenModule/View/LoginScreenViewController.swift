@@ -7,49 +7,59 @@
 //
 
 import UIKit
-import LBTATools
 
-class LoginScreenViewController: LBTAFormController {
+class LoginScreenViewController: UIViewController {
+    
+    //MARK: - IBOutlets
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var apiTextField: UITextField!
     @IBOutlet weak var stayLoggedSwitch: UISwitch!
     @IBOutlet weak var logInButton: UIButton!
+    // need activityIndicator inside LoginButton
     @IBOutlet weak var howToButton: UIButton!
-    @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
-    var searchController: UISearchController?
+    
+    //MARK: - Variables
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
     var presenter: LoginScreenPresenterProtocol!
     
     
+    //MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginIndicator.isHidden = true
         setupLoginButton()
-        prepareForAnimation()
+        setupGesture()
+        presenter.setupAnimations()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        presenter.performButtonAnimation(withDuration: 1, delay: 0.2, for: logInButton)
-        presenter.performImageViewAnimation(withDuration: 1, delay: 0, for: logoImageView)
-        presenter.performButtonAnimation(withDuration: 3, delay: 1, for: howToButton)
-        presenter.performLabelAnimation(withDuration: 1, delay: 0.5, for: welcomeLabel)
+        presenter.performAnimations()
     }
     
-    private func prepareForAnimation() {
-        welcomeLabel.transform = CGAffineTransform(translationX: 0, y: -500)
-        logoImageView.transform = CGAffineTransform(translationX: 500, y: 0)
-        logInButton.transform = CGAffineTransform(translationX: -500, y: 0)
-        logInButton.alpha = 0
-        welcomeLabel.alpha = 0
-        logoImageView.alpha = 0
-        howToButton.alpha = 0
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.apiTextField.delegate = self
+        presenter.addKeyboardObserver()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.removeKeyboardObserver()
+    }
+    
+    
+    //MARK: - Private Methods
     
     private func setupLoginButton() {
-        
         logInButton.layer.cornerRadius = 16
         logInButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         logInButton.layer.borderWidth = 2
@@ -59,23 +69,27 @@ class LoginScreenViewController: LBTAFormController {
         logInButton.layer.shadowOffset = CGSize(width: 5, height: 5)
     }
     
+    
+    //MARK: - IBActions
+    
     @IBAction func tapLogIn(_ sender: UIButton) {
-        
         let apiKey = apiTextField.text
         let switchIsOn = stayLoggedSwitch.isOn
         presenter.performLogin(with: apiKey, switchIsOn: switchIsOn)
     }
     
     @IBAction func tapHowTo(_ sender: UIButton) {
-    
+        
     }
     
 }
 
+
+//MARK: - Login Screen Protocol Methods
+
 extension LoginScreenViewController: LoginScreenProtocol {
-    
+            
     func showAlert(with title: String?, message: String) {
-        
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
         ac.addAction(ok)
@@ -83,7 +97,26 @@ extension LoginScreenViewController: LoginScreenProtocol {
     }
     
     func proceedToScreen(viewController: UIViewController) {
-        
         present(viewController, animated: true, completion: nil)
+    }
+    
+    func setupGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissKeyboard () {
+        self.view.endEditing(true)
+    }
+}
+
+
+//MARK: - TextField Delegate Methods
+
+extension LoginScreenViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

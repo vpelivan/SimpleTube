@@ -10,15 +10,22 @@ import UIKit
 
 class VideoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var thumbLoadIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var videoTitleLabel: UILabel!
+    @IBOutlet weak var channelLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        setupViews()
     }
     
+    private func setupViews() {
+        imageContainerView.layer.cornerRadius = 5.0
+        thumbImageView.layer.cornerRadius = 5.0
+        thumbImageView.clipsToBounds = true
+    }
 }

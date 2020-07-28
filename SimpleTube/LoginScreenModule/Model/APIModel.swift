@@ -9,5 +9,5 @@
 import Foundation
 
 struct ApiKey {
-    var apiKey: String?
+    var key: String?
 }
