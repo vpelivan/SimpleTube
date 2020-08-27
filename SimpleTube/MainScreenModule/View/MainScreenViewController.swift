@@ -22,6 +22,7 @@ class MainScreenViewController: UIViewController, MainScreenProtocol, UISearchCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Simple Tube"
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,6 +32,8 @@ class MainScreenViewController: UIViewController, MainScreenProtocol, UISearchCo
         tableView.register(palylistNib, forCellReuseIdentifier: "playlistCell")
         let channelNib = UINib(nibName: "ChannelTableViewCell", bundle: nil)
         tableView.register(channelNib, forCellReuseIdentifier: "channelCell")
+        let recentNib = UINib(nibName: "RecentTableViewCell", bundle: nil)
+        tableView.register(recentNib, forCellReuseIdentifier: "recentCell")
         tableView.tableFooterView = UIView(frame: .zero)
         setupSearchBar()
         searchController?.delegate = self
@@ -41,15 +44,15 @@ class MainScreenViewController: UIViewController, MainScreenProtocol, UISearchCo
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchResultsUpdater = self
         searchController?.obscuresBackgroundDuringPresentation = true
+        searchController?.searchBar.placeholder = "Search Anything"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .done, target: self, action: #selector(tapLogOut))
 //            UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(addTapped))
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-        searchController?.searchBar.placeholder = "Search Anything"
     }
+
     
     @objc func tapLogOut() {
         self.dismiss(animated: true, completion: nil)
@@ -69,24 +72,33 @@ extension MainScreenViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath) as! VideoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "recentCell", for: indexPath) as! RecentTableViewCell
             return cell
         } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath) as! VideoTableViewCell
+            return cell
+        } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell", for: indexPath) as! PlaylistTableViewCell
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! ChannelTableViewCell
             return cell
         }
-        return UITableViewCell()
     }
     
     
 }
 
 extension MainScreenViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 1 {
+            let playerVC = ModuleBuilder.CreatePlayerScreen()
+            navigationController?.pushViewController(playerVC, animated: true)
+        }
+    }
     
 }
 

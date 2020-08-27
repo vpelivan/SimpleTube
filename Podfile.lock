@@ -1,0 +1,16 @@
+PODS:
+  - XCDYouTubeKit (2.14.1)
+
+DEPENDENCIES:
+  - XCDYouTubeKit (~> 2.5)
+
+SPEC REPOS:
+  trunk:
+    - XCDYouTubeKit
+
+SPEC CHECKSUMS:
+  XCDYouTubeKit: 5d50bbacdd9fedf26fb578bab901d946ff3d064c
+
+PODFILE CHECKSUM: 1fccf473ece0f3b09fc93978b6ba2993e2d16d8e
+
+COCOAPODS: 1.9.2

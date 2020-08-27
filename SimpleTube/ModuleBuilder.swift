@@ -12,7 +12,7 @@ import UIKit
 protocol Builder {
     static func CreateLoginScreen() -> UIViewController
     static func CreateMainScreen() -> UINavigationController
-    static func CreatePlayerScreen(for item: Item) -> UIViewController
+    static func CreatePlayerScreen() -> UIViewController
 }
 
 class ModuleBuilder: Builder {
@@ -25,19 +25,20 @@ class ModuleBuilder: Builder {
     }
     
     static func CreateMainScreen() -> UINavigationController {
-       let view = MainScreenViewController(nibName: "MainScreenViewController", bundle: nil)
+        let view = MainScreenViewController(nibName: "MainScreenViewController", bundle: nil)
         let presenter = MainScreenPresenter(view: view)
         view.presenter = presenter
         let navigationController = UINavigationController(rootViewController: view)
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.navigationBar.prefersLargeTitles = true
-        
-//        navigationController.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
         return navigationController
     }
     
-    static func CreatePlayerScreen(for item: Item) -> UIViewController {
-        return UIViewController()
+    static func CreatePlayerScreen() -> UIViewController {
+        let view = PlayerScreenViewController()
+        let presenter = PlayerScreenPresenter(view: view)
+        view.presenter = presenter
+        return view
     }
     
 }
